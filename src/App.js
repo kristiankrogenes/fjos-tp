@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+
 import './App.css';
+import AddAnimal from './AddAnimal.js';
+import AnimalTable from './AnimalTable.js';
+
+import animals from './animals.json';
+
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
+
+  const [animalList, setAnimalList] = useState([]);
+  
+  useEffect(() => {
+    setAnimalList(animals.map(object => {
+      return object;
+    }));
+  }, []);
+
+  function addNewAnimal(newAnimal) {
+    setAnimalList([...animalList, newAnimal]);
+  }
+
+  function deleteAnimal(id) {
+    setAnimalList(animalList.filter(animal => animal.id !== id));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <p>TEST 2</p>
-      <p>TEST 3</p>
+      
+      <h1>FJØSET</h1>
+
+      <AnimalTable animals={animalList} onDeleteAnimal={deleteAnimal} />
+
+      <AddAnimal onNewAnimal={addNewAnimal} />
+
     </div>
   );
 }
