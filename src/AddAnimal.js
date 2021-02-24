@@ -34,7 +34,7 @@ function AddAnimal(props) {
     <div>
       <Button onClick={handleShow}>ADD ANIMAL</Button>
 
-      <Modal show={show}>
+      <Modal show={show} animation={false}>
 
         <Modal.Header>
           <Modal.Title>ADD NEW ANIMAL</Modal.Title>

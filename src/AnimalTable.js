@@ -27,7 +27,7 @@ function AnimalTable(props) {
               <tr>
                 <th>{animal.id}</th>
                 <th>{animal.name}</th>
-                <th>{animal.type}</th>
+                <th>{animal.animalType}</th>
                 <th>{animal.age}</th>
                 <th>{animal.gender}</th>
                 <th><Button onClick={handleDelete} id={animal.id}>DELETE</Button></th>
